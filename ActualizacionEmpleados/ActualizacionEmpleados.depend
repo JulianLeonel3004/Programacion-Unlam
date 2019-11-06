@@ -1,0 +1,41 @@
+# depslib dependency file v1.0
+1573006381 source:c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\main.c
+	<stdio.h>
+	<stdlib.h>
+	"principal.h"
+	"archivo.h"
+	"arbol.h"
+	"lista.h"
+
+1572999606 source:c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\archivos.c
+	"archivo.h"
+	<stdio.h>
+	<stdlib.h>
+
+1573007601 c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\archivo.h
+
+1573004421 c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\arbol.h
+
+1573004429 source:c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"arbol.h"
+	"archivo.h"
+
+1573005219 source:c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"lista.h"
+
+1573005191 c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\lista.h
+
+1573006419 source:c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\principal.c
+	<stdio.h>
+	<stdlib.h>
+	"principal.h"
+	"archivo.h"
+
+1573007594 c:\users\jlopez\documents\unlam\programacion\actualizacionempleados\principal.h
+	"arbol.h"
+	"lista.h"
+
