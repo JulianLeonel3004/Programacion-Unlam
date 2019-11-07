@@ -47,3 +47,7 @@ void mostrarEmpleado(const char* nom_emp)
 {
 
 }
+void parsear(char* aux,t_postulantes* post)
+{
+
+}

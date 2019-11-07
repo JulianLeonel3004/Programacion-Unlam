@@ -34,22 +34,19 @@
 		<Unit filename="arbol.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="arbol.h" />
-		<Unit filename="archivo.h" />
 		<Unit filename="archivos.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="lista.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="principal.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="principal.h" />
+		<Unit filename="tipos.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

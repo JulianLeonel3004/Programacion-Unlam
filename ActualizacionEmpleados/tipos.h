@@ -39,6 +39,7 @@ typedef struct
 
 int crearArchivos(const char*,const char*,const char*);
 void mostrarEmpleado(const char*);
+void parsear(char*,t_postulantes*);
 
 ///T_INFO GENERAL
 typedef struct
@@ -74,6 +75,7 @@ int ponerEnLista(t_lista*,t_info*,int (*cmp)(t_info*,t_info*));
 
 ///AUX
 int comp(t_info*,t_info*);
+
 
 ///MAIN
 int cargarArbolEmpleado(t_arbol*,const char*,int (*cmp)(t_info*,t_info*));

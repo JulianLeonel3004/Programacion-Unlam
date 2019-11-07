@@ -53,7 +53,7 @@ int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, in
 int actualizarSueldosXPostulantes(t_arbol* pa,const char* arch_post ,t_lista* pl,int (*cmp)(t_info*,t_info*))
 {
     char aux[68];
-   // t_postulantes post;
+    t_postulantes post;
 
     FILE*fp = fopen(arch_post,"rt");
     if(!fp)
@@ -61,7 +61,7 @@ int actualizarSueldosXPostulantes(t_arbol* pa,const char* arch_post ,t_lista* pl
 
     while(fgets(aux,sizeof(t_postulantes),fp))
     {
-        ///parsear en post
+        parsear(aux,&post);
         ///buscar en lista
         ///si está, cargar en arbol
         ///si NO está, enviar a cola
