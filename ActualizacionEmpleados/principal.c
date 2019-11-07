@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "principal.h"
-#include "archivo.h"
+#include "tipos.h"
 
-void cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados)
+int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int(*cmp)(t_info*, t_info*))
 {
     t_empleado emp;
-    t_infoArbol info;
+    t_info info;
 
     FILE* fp = fopen(nom_empleados,"rb");
     if(!fp)
-        return;
+        return 0;
 
     fread(&emp,sizeof(t_empleado),1,fp);
     while(!feof(fp))
@@ -18,16 +17,62 @@ void cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados)
         info.id = emp.id;
         info.sueldo = emp.sueldo;
 
-        insertarEnArbol(pa,&info);
+        insertarOActualizarEnArbol(pa,&info,cmp);
         fread(&emp,sizeof(t_empleado),1,fp);
     }
+
+    fclose(fp);
+
+    return 1;
 }
 
-void actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, int (*cmp)(t_infoArbol*,t_infoArbol*))
+int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, int (*cmp)(t_info*,t_info*))
 {
+    t_novedades nov;
+    t_info info;
+    FILE* fp = fopen(arch_nov,"rb");
+    if(!fp)
+        return 1;
 
+    fread(&nov,sizeof(t_novedades),1,fp);
+    while(!feof(fp))
+    {
+       info.id = nov.id;
+       info.sueldo = nov.nuevoSueldo;
+
+        if(!insertarOActualizarEnArbol(pa,&info,cmp))
+            if(!ponerEnLista(pl,&info,cmp))
+                return 2;
+        fread(&nov,sizeof(t_novedades),1,fp);
+    }
+
+    fclose(fp);
+
+    return 0;
 }
-void actualizarSueldosXPostulantes(t_arbol* pa,const char* arch_post ,t_lista* pl,int (*cmp)(t_infoArbol*,t_infoArbol*))
+int actualizarSueldosXPostulantes(t_arbol* pa,const char* arch_post ,t_lista* pl,int (*cmp)(t_info*,t_info*))
 {
+    char aux[68];
+   // t_postulantes post;
 
+    FILE*fp = fopen(arch_post,"rt");
+    if(!fp)
+        return 0;
+
+    while(fgets(aux,sizeof(t_postulantes),fp))
+    {
+        ///parsear en post
+        ///buscar en lista
+        ///si está, cargar en arbol
+        ///si NO está, enviar a cola
+    }
+
+    fclose(fp);
+
+    return 1;
 }
+
+int id;
+    char ap[30];
+    char nom[30];
+    t_fecha fechaNac;

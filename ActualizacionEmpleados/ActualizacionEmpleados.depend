@@ -39,3 +39,42 @@
 	"arbol.h"
 	"lista.h"
 
+1573083644 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\archivos.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1573009302 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\archivo.h
+
+1573084005 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\main.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1573081731 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\principal.h
+	"arbol.h"
+	"lista.h"
+
+1573081712 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\arbol.h
+	"principal.h"
+
+1573081752 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\lista.h
+	"principal.h"
+
+1573083859 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\principal.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1573083680 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\arbol.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1573083532 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\lista.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1573084083 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\tipos.h
+

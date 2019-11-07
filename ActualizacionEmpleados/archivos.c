@@ -1,6 +1,6 @@
-#include "archivo.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "tipos.h"
 
 int crearArchivos(const char*nombreEmp,const char*nombreNov,const char*nombrePost)
 {
