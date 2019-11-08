@@ -2,12 +2,12 @@
 #include <stdlib.h>
 #include "tipos.h"
 
-void crearLista(t_lista*pl)
+void crearLista(t_lista* p)
 {
-    *pl = NULL;
+    *p = NULL;
 }
-
-int ponerEnLista(t_lista*p,t_info* d, int(*cmp)(t_info*,t_info*))
+int ponerEnLista(t_lista* p,t_info* d,int (*cmp)(t_info*,t_info*))
 {
     return 1;
 }
+

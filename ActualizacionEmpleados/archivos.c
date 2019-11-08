@@ -43,7 +43,7 @@ int crearArchivos(const char*nombreEmp,const char*nombreNov,const char*nombrePos
 
     return 0;
 }
-void mostrarEmpleado(const char* nom_emp)
+void mostrarEmpleadosYCantErrores(const char* nom_emp,int errores)
 {
 
 }

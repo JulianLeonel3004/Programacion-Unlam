@@ -38,12 +38,12 @@ typedef struct
 
 
 int crearArchivos(const char*,const char*,const char*);
-void mostrarEmpleado(const char*);
+void mostrarEmpleadosYCantErrores(const char*, int);
 void parsear(char*,t_postulantes*);
 
 ///T_INFO GENERAL
 typedef struct
-{
+{   int index;
     int id;
     float sueldo;
 }t_info;
@@ -58,8 +58,9 @@ typedef struct sNodoArbol
 
 }t_nodo,* t_arbol;
 
+
 void crearArbol(t_arbol*);
-int insertarOActualizarEnArbol(t_arbol*,const t_info*,int(*cmp)(t_info*,t_info*));
+int insertarOActualizarEnArbol(t_arbol*,const t_info*,int(*cmp)(const t_info*,const t_info*));
 
 ///LISTA
 
@@ -73,15 +74,26 @@ typedef struct sNodoLista
 void crearLista(t_lista*);
 int ponerEnLista(t_lista*,t_info*,int (*cmp)(t_info*,t_info*));
 
+///COLA CIRCULAR
+
+typedef struct sNodoColaC
+{
+    t_info info;
+    struct sNodoColaC* pri,* seg;
+
+}t_nodoColaC, *t_colaC;
+
+void crearColaC(t_colaC*);
+
 ///AUX
 int comp(t_info*,t_info*);
 
 
 ///MAIN
-int cargarArbolEmpleado(t_arbol*,const char*,int (*cmp)(t_info*,t_info*));
-int actualizarSueldosXNovedades(t_arbol*,const char*,t_lista*,int (*cmp)(t_info*,t_info*));
-int actualizarSueldosXPostulantes(t_arbol*,const char*,t_lista*,int (*cmp)(t_info*,t_info*));
-
+int cargarArbolEmpleado(t_arbol*,const char*,int (*cmp)(const t_info*,const t_info*));
+int cargarListaPostulantes(t_lista*,const char*);
+int actualizarSueldosXNovedades(t_arbol*,const char*,t_lista*,int (*cmp)(const t_info*, const t_info*));
+int actualizarSueldosXPostulantes(t_arbol*,t_lista*,int*,int (*cmp)(const t_info*,const t_info*));
 
 
 #endif // TIPOS_H_INCLUDED

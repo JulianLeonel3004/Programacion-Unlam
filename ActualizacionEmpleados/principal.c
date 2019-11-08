@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "tipos.h"
 
-int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int(*cmp)(t_info*, t_info*))
+int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int (*cmp)(const t_info*, const t_info*))
 {
     t_empleado emp;
     t_info info;
@@ -25,8 +25,27 @@ int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int(*cmp)(t_info*,
 
     return 1;
 }
+int cargarListaPostulantes(t_lista*p,const char* arch_post)
+{
+    char aux[68];
+    t_postulantes post;
 
-int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, int (*cmp)(t_info*,t_info*))
+    FILE*fp = fopen(arch_post,"rt");
+    if(!fp)
+        return 0;
+
+    while(fgets(aux,sizeof(t_postulantes),fp))
+    {
+        parsear(aux,&post);
+        ///cargar en lista
+    }
+
+    fclose(fp);
+
+    return 1;
+}
+
+int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, int (*cmp)(const t_info*,const t_info*))
 {
     t_novedades nov;
     t_info info;
@@ -50,29 +69,15 @@ int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, in
 
     return 0;
 }
-int actualizarSueldosXPostulantes(t_arbol* pa,const char* arch_post ,t_lista* pl,int (*cmp)(t_info*,t_info*))
+
+int actualizarSueldosXPostulantes(t_arbol* pa, t_lista* pl,int *errores,int (*cmp)(const t_info*,const t_info*))
 {
-    char aux[68];
-    t_postulantes post;
-
-    FILE*fp = fopen(arch_post,"rt");
-    if(!fp)
-        return 0;
-
-    while(fgets(aux,sizeof(t_postulantes),fp))
-    {
-        parsear(aux,&post);
-        ///buscar en lista
-        ///si está, cargar en arbol
-        ///si NO está, enviar a cola
-    }
-
-    fclose(fp);
-
-    return 1;
+    ///desencolar
+    ///buscar en lista.
+    ///Si está, agregar en arbol
+    ///Si no está contar error
 }
-
-int id;
-    char ap[30];
-    char nom[30];
-    t_fecha fechaNac;
+int comp(t_info* infoA, t_info* infoB)
+{
+    return infoA->id - infoB->id;
+}
