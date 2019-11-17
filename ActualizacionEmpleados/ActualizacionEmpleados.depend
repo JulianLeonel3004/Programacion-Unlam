@@ -39,14 +39,15 @@
 	"arbol.h"
 	"lista.h"
 
-1573183634 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\archivos.c
+1574026075 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\archivos.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 	"tipos.h"
 
 1573009302 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\archivo.h
 
-1573183554 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\main.c
+1574008039 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\main.c
 	<stdio.h>
 	<stdlib.h>
 	"tipos.h"
@@ -61,20 +62,30 @@
 1573081752 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\lista.h
 	"principal.h"
 
-1573169753 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\principal.c
+1574007027 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\principal.c
 	<stdio.h>
 	<stdlib.h>
 	"tipos.h"
 
-1573184722 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\arbol.c
+1573607339 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\arbol.c
 	<stdio.h>
 	<stdlib.h>
 	"tipos.h"
 
-1573167028 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\lista.c
+1574025139 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\lista.c
 	<stdio.h>
 	<stdlib.h>
 	"tipos.h"
 
-1573184861 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\tipos.h
+1574006647 c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\tipos.h
+
+1573419090 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\cola.cpp
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
+
+1574006851 source:c:\users\jlopez\documents\unlam\programacion\programacion-unlam\actualizacionempleados\cola.c
+	<stdio.h>
+	<stdlib.h>
+	"tipos.h"
 

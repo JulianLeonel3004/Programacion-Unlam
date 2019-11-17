@@ -37,6 +37,9 @@
 		<Unit filename="archivos.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="cola.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="lista.c">
 			<Option compilerVar="CC" />
 		</Unit>

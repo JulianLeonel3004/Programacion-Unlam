@@ -6,6 +6,7 @@ int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int (*cmp)(const t
 {
     t_empleado emp;
     t_info info;
+    int index = 0;
 
     FILE* fp = fopen(nom_empleados,"rb");
     if(!fp)
@@ -15,9 +16,10 @@ int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int (*cmp)(const t
     while(!feof(fp))
     {
         info.id = emp.id;
-        info.sueldo = emp.sueldo;
+        info.index  = index++;
 
-        insertarOActualizarEnArbol(pa,&info,cmp);
+        insertarEnArbol(pa,&info,cmp);
+
         fread(&emp,sizeof(t_empleado),1,fp);
     }
 
@@ -25,7 +27,7 @@ int cargarArbolEmpleado(t_arbol* pa,const char* nom_empleados,int (*cmp)(const t
 
     return 1;
 }
-int cargarListaPostulantes(t_lista*p,const char* arch_post)
+int cargarListaPostulantes(t_lista*p,const char* arch_post,int(*cmp)(const t_info*,const t_info*))
 {
     char aux[68];
     t_postulantes post;
@@ -37,7 +39,8 @@ int cargarListaPostulantes(t_lista*p,const char* arch_post)
     while(fgets(aux,sizeof(t_postulantes),fp))
     {
         parsear(aux,&post);
-        ///cargar en lista
+        if(!ponerEnLista(p,&post,cmp))
+            return 0;
     }
 
     fclose(fp);
@@ -45,23 +48,36 @@ int cargarListaPostulantes(t_lista*p,const char* arch_post)
     return 1;
 }
 
-int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, int (*cmp)(const t_info*,const t_info*))
+int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,const char* arch_emp,t_colaC* cola, int (*cmp)(const t_info*,const t_info*))
 {
     t_novedades nov;
     t_info info;
+    t_infoC infoCola;
+
     FILE* fp = fopen(arch_nov,"rb");
     if(!fp)
-        return 1;
+        return ERROR_ARCHIVO;
 
     fread(&nov,sizeof(t_novedades),1,fp);
     while(!feof(fp))
     {
        info.id = nov.id;
-       info.sueldo = nov.nuevoSueldo;
 
-        if(!insertarOActualizarEnArbol(pa,&info,cmp))
-            if(!ponerEnLista(pl,&info,cmp))
-                return 2;
+        if(buscarEnArbol(pa,&info,cmp))
+        {
+          if(!actualizarEmpleado(arch_emp,&info,&nov))
+                return ERROR_ACTUALIZAR;
+        }
+        else
+        {
+            infoCola.id = info.id;
+            infoCola.sueldo = nov.nuevoSueldo;
+
+            if(!ponerEnCola(cola,&infoCola))
+                return SIN_MEMORIA;
+        }
+
+
         fread(&nov,sizeof(t_novedades),1,fp);
     }
 
@@ -70,14 +86,48 @@ int actualizarSueldosXNovedades(t_arbol* pa,const char* arch_nov,t_lista* pl, in
     return 0;
 }
 
-int actualizarSueldosXPostulantes(t_arbol* pa, t_lista* pl,int *errores,int (*cmp)(const t_info*,const t_info*))
+int actualizarSueldosXPostulantes(const char* arch_emp, t_colaC* pc, t_lista* pl,int *pe,int (*cmp)(const t_info*,const t_info*))
 {
-    ///desencolar
-    ///buscar en lista.
-    ///Si está, agregar en arbol
-    ///Si no está contar error
+    t_info info;
+    t_postulantes post;
+    t_infoC infoCola;
+    t_empleado emp;
+    int errores= 0;
+
+    FILE* fp = fopen(arch_emp,"ab");
+
+
+
+    fseek(fp,sizeof(t_empleado),SEEK_END);
+
+    while(desencolar(pc,&infoCola))
+    {
+        info.id = infoCola.id;
+
+        if(buscarEnLista(pl,&info,&post,cmp))
+        {
+            emp.id = post.id;
+            strcpy(emp.ap, post.ap);
+            strcpy(emp.nom, post.nom);
+            emp.fechaNac = post.fechaNac;
+
+            emp.sueldo = infoCola.sueldo;
+
+            fwrite(&emp,sizeof(t_empleado),1,fp);
+        }
+        else
+            errores++;
+    }
+
+    *pe = errores;
+
+    fclose(fp);
+
+    return 1;
+
+
 }
-int comp(t_info* infoA, t_info* infoB)
+int comp(t_info* d1, t_info* d2)
 {
-    return infoA->id - infoB->id;
+    return d1->id - d2->id;
 }
